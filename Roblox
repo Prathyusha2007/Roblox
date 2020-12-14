@@ -1,30 +1,80 @@
 import tkinter as tk
 from tkinter import ttk
 
+year_list=[]
+for i in range(1900,2021):
+  year_list.append(i)
+
+
+day_list=[]
+for x in range(1,32):
+  day_list.append(x)
+
+
 root=tk.Tk()
 root.title("Roblox")
 root.geometry("500x200")
 
 
-#title=tk.Label(root, text="Sign up and start having FUN!")
-#title.config(font=("Arial",22))
-#title.grid(row=0,column=)
-
 user_label=tk.Label(root,text="Username: ")
 user_label.config(font=("Arial",22))
 user_label.grid(row=1,column=1, pady=2)
-
 
 pass_label=tk.Label(root,text="Password: ")
 pass_label.config(font=("Arial",22))
 pass_label.grid(row=2,column=1, pady=2)
 
-entry1=tk.Entry(root)
+month_label=tk.Label(root,text="Select Month: ")
+month_label.config(font=("Arial",22))
+month_label.grid(row=3,column=1, pady=2)
+
+year_label=tk.Label(root,text="Select Year: ")
+year_label.config(font=("Arial",22))
+year_label.grid(row=4,column=1, pady=2)
+
+day_label=tk.Label(root,text="Select Day: ")
+day_label.config(font=("Arial",22))
+day_label.grid(row=5,column=1, pady=2)
+
+
+e1=tk.StringVar()
+entry1=tk.Entry(root,textvariable=e1)
 entry1.grid(row=1,column=2)
 
-
-entry2=tk.Entry(root,show="*")
+e2=tk.StringVar()
+entry2=tk.Entry(root,show="*",textvariable=e2)
 entry2.grid(row=2,column=2)
 
+
+mb=tk.StringVar()
+month_box=ttk.Combobox(root, width=27,textvariable=mb)
+month_box.grid(row=3,column=2)
+
+months = [' January',' February',' March',' April',' May',' June',' July',' August',' September',' October',' November',' December']
+month_box['values']=months
+
+
+yb=tk.StringVar()
+year_box=ttk.Combobox(root,width=27,textvariable=yb)
+year_box.grid(row=4,column=2)
+year_box['values']=year_list
+
+db=tk.StringVar()
+day_box=ttk.Combobox(root,width=27,textvariable=db)
+day_box.grid(row=5,column=2)
+day_box['values']=day_list
+
+
+def sign_up():
+  username=e1.get()
+  password=e2.get()
+  month=mb.get()
+  year=yb.get()
+  day=db.get()
+
+  print(f"{username},{password}, DOB:{day}/{month}/{year}")
+sing_up_btn=tk.Button(root,text="Sign Up",width=30,fg="White",bg="Green",command=sign_up)
+sing_up_btn.config(font=("Arial",14))
+sing_up_btn.grid(row=6,column=2,pady=4)
 #title.pack()
 root.mainloop()
