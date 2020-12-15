@@ -72,7 +72,9 @@ def sign_up():
   year=yb.get()
   day=db.get()
 
-  print(f"{username},{password}, DOB:{day}/{month}/{year}")
+  print(f"Your username is :{username},Your password is :{password},Your date of birth is :{day}/{month}/{year}")
+
+
 sing_up_btn=tk.Button(root,text="Sign Up",width=30,fg="White",bg="Green",command=sign_up)
 sing_up_btn.config(font=("Arial",14))
 sing_up_btn.grid(row=6,column=2,pady=4)
